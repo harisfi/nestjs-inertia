@@ -1,6 +1,6 @@
 {
   "name": "nestjs-inertia",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial NestJS (express platform) adapter for InertiaJS.",
   "license": "MIT",
   "main": "dist/index.js",
