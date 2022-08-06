@@ -1,0 +1,28 @@
+name: CD Pipeline
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3with:
+        ref: ${{ github.event.release.target_commitish }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: git config --global user.name "GitHub CD bot"
+      - run: git config --global user.email "github-cd-bot@example.com"
+      - run: npm version ${{ github.event.release.tag_name }}
+      - run: npm run build
+      - run: npm test
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: git push
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
