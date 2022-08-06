@@ -45,7 +45,9 @@
   "dependencies": {
     "@nestjs/common": "^9.0.8",
     "@nestjs/core": "^9.0.8",
-    "@nestjs/platform-express": "^9.0.8"
+    "@nestjs/platform-express": "^9.0.8",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.6"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -62,5 +64,8 @@
   },
   "directories": {
     "test": "test"
+  },
+  "publishConfig": {
+    "tag": "v1-latest"
   }
 }
